@@ -19,11 +19,7 @@ class ProjectItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(
-            width: 5,
-            height: 60,
-            child: DecoratedBox(decoration: BoxDecoration(color: Colors.green)),
-          ),
+          _getProjectStatus(poc),
           const SizedBox(
             width: 15,
             height: 60,
@@ -54,5 +50,34 @@ class ProjectItem extends StatelessWidget {
       trailing: const Icon(Icons.chevron_right),
       onTap: onPress,
     );
+  }
+
+  Widget _getProjectStatus(Project project) {
+    if (project.projectStatus == ProjectStatus.toDo) {
+      return const SizedBox(
+        width: 5,
+        height: 60,
+        child: DecoratedBox(decoration: BoxDecoration(color: Colors.red)),
+      );
+    } else if (project.projectStatus == ProjectStatus.done) {
+      return const SizedBox(
+        width: 5,
+        height: 60,
+        child: DecoratedBox(decoration: BoxDecoration(color: Colors.green)),
+      );
+    } else if (project.projectStatus == ProjectStatus.onGoingPoc) {
+      return const SizedBox(
+        width: 5,
+        height: 60,
+        child: DecoratedBox(decoration: BoxDecoration(color: Colors.amber)),
+      );
+    } else {
+      return const SizedBox(
+        width: 5,
+        height: 60,
+        child:
+            DecoratedBox(decoration: BoxDecoration(color: Colors.blueAccent)),
+      );
+    }
   }
 }

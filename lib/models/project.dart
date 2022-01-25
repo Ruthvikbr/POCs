@@ -1,4 +1,9 @@
-enum ProjectStatus { toDo, inProgress, done, onGoingPoc }
+class ProjectStatus {
+  static const String toDo = "To Do";
+  static const String inProgress = "In Progress";
+  static const String done = "Done";
+  static const String onGoingPoc = "On Going POC";
+}
 
 const String tableProjects = "projects";
 
@@ -63,17 +68,28 @@ class Project {
     };
   }
 
-  Project copy(int? id) {
+  Project copy({
+     int? id,
+     String? projectName,
+     String? projectTechStack,
+     String? projectDescription,
+     String? projectStatus,
+     String? projectGithubLink,
+     String? projectResourceLink,
+     int? priority,
+     String? projectCompletionDate,
+}) {
     return Project(
         id: id ?? this.id,
-        projectName: projectName,
-        projectDescription: projectDescription,
-        projectTechStack: projectTechStack,
-        projectStatus: projectStatus,
-        projectGithubLink: projectGithubLink,
-        projectResourceLink: projectResourceLink,
-        priority: priority,
-        projectCompletionDate: projectCompletionDate);
+        projectName: projectName ?? this.projectName,
+        projectDescription: projectDescription ?? this.projectDescription,
+        projectTechStack: projectTechStack ?? this.projectTechStack,
+        projectStatus: projectStatus ?? this.projectStatus,
+        projectGithubLink: projectGithubLink ?? this.projectGithubLink,
+        projectResourceLink: projectResourceLink ?? this.projectResourceLink,
+        priority: priority ?? this.priority,
+        projectCompletionDate: projectCompletionDate ?? this.projectCompletionDate,
+    );
   }
 
   static Project fromJson(Map<String, dynamic> json) => Project(

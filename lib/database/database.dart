@@ -1,15 +1,17 @@
+import 'dart:async';
+
 import 'package:path/path.dart';
 import 'package:pocs/models/project.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ProjectsDatabase {
-  // Create a new database
-
   static final ProjectsDatabase instance = ProjectsDatabase._init();
 
   static Database? _database;
 
   ProjectsDatabase._init();
+
+
 
   Future<Database> get database async {
     if (_database != null) {
@@ -41,7 +43,7 @@ class ProjectsDatabase {
     ${ProjectFields.projectGithubLink} $textType,
     ${ProjectFields.projectResourceLink} $textType,
     ${ProjectFields.projectCompletionDate} $textType,
-    ${ProjectFields.priority} $integerType,
+    ${ProjectFields.priority} $integerType
     )
     ''');
   }
@@ -49,10 +51,12 @@ class ProjectsDatabase {
   Future<Project> insertProject(Project project) async {
     final db = await instance.database;
     final id = await db.insert(tableProjects, project.toMap());
-    return project.copy(id);
+    return project.copy(
+      id: id
+    );
   }
 
-  Future<List<Project>> getProject(int id) async {
+  Future<List<Project>> getProjects() async {
     const orderBy = '${ProjectFields.priority} ASC';
     final db = await instance.database;
     final result = await db.query(
@@ -73,7 +77,7 @@ class ProjectsDatabase {
     );
   }
 
-  Future<int> delete(int id) async{
+  Future<int> delete(int? id) async{
     final db = await instance.database;
 
     return await db.delete(

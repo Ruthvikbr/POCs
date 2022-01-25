@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Constants.materialBlackColor,
       ),
-      home: const ProjectsList(),
+      home:ProjectsList.create(context),
     );
   }
 }
