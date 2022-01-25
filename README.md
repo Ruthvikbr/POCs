@@ -16,6 +16,8 @@ A Flutter app that stores the list of projects and it's details using [Sqflite p
 
 <p align="center">
   <br>
-  <img src="https://user-images.githubusercontent.com/37804253/150629617-cdc8a9cd-026f-4867-a2e0-b843b46c344d.png" width="250" height="520">
+  <img src="https://user-images.githubusercontent.com/37804253/151007241-80d5ff07-f5a8-4926-ad61-b08bbb709970.png" width="250" height="520">
+  <img src="https://user-images.githubusercontent.com/37804253/151007269-5467780e-8fdb-40e9-97cd-761bd524f213.png" width="250" height="520">
+  <img src="https://user-images.githubusercontent.com/37804253/151007276-a47730ea-b0bc-4d9b-9e1d-8561e0692b90.png" width="250" height="520">
 </p>
 
